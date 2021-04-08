@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<!-- message폴더 안에 있는 message-common 을 지정 -->
+				<!-- 
+					기본적으로 message-common을 사용하고, 만일 나중에 한글, 영어를 선택할 떄 lang을 통해서 
+					언어를 변경할 떄에는 ko인지 en인지 정해서 message-common_ko를 보여줄지, message-common_en을 보여줄지 정한다.
+				 -->
+				<value>message.message-common</value>
+			</list>
+		</property>
+		<!-- 기본으로 잡히는 Encoding은 UTF-8입니다. -->
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+	
+	<!-- 기본으로 설정되는 언어를 ko로 선언한다는 의미입니다. -->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="ko" />
+	</bean>
+</beans>

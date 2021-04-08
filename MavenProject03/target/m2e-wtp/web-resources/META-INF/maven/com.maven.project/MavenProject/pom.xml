@@ -1,0 +1,82 @@
+<!-- 프로젝트에 대한 정보 -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<!-- Model 버전 정보 -->
+	<modelVersion>4.0.0</modelVersion>
+	<!-- grooupId에 대한 정보 -->
+	<groupId>com.maven.project</groupId>
+	<!-- artifactId에 대한 정보. 즉, 프로젝트 이름 -->
+	<artifactId>MavenProject</artifactId>
+	<!-- 배포 시 어떻게 배포할 것인가에 대한 정보. war, jar 선택 가능. -->
+	<packaging>war</packaging>
+	<!-- 배포 버전? -->
+	<version>0.0.1-SNAPSHOT</version>
+	<!-- 프로젝트 이름 -->
+	<name>MavenProject Maven Webapp</name>
+	<!-- 사이트 URL -->
+	<url>http://maven.apache.org</url>
+
+	<!-- 라이브러리 의존성을 관리 -->
+	<dependencies>
+
+		<!-- 하나의 라이브러리를 추가 -->
+		<dependency>
+			<!-- 라이브러리에 대한 정보 -->
+			<groupId>junit</groupId> <!-- 라이브러리 groupId -->
+			<artifactId>junit</artifactId> <!-- 라이브러리 artifactId -->
+			<version>3.8.1</version> <!-- 라이브러리 버전 -->
+			<scope>test</scope> <!-- 라이브러리 스코프범위 compile, runtime, provided, test로 나뉨 -->
+		</dependency>
+
+		<!-- 1. 신규 추가 작업 시작 -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+		<!-- spring-context 하위에는 beans, core, aop 등이 있어서 얘만 사용 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<!-- /1. 신규 추가 작업 끝 -->
+
+		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+
+	</dependencies>
+
+	<!-- 2. 신규 추가 작업 시작 -->
+	<!-- properties라는 태그는 pom.xml에서 자주 사용되는 것을 설정 -->
+	<properties>
+		<spring-version>4.0.2.RELEASE</spring-version>
+	</properties>
+	<!-- /2. 신규 추가 작업 끝 -->
+
+	<!-- 빌드에 대한 정보 -->
+	<build>
+		<finalName>MavenProject</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<compilerArgument>-Xlint:all</compilerArgument>
+					<showWarnings>true</showWarnings>
+					<showDeprecation>true</showDeprecation>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
